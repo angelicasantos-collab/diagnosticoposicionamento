@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico de Posicionamento Digital — Instagram para Médicas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #042219;
+    --navy-mid: #083528;
+    --navy-light: #0d4a38;
+    --blue: #aa8c5a;
+    --blue-light: #c4a97a;
+    --blue-pale: #f7f1e8;
+    --teal: #6b7c5e;
+    --teal-pale: #eef1eb;
+    --gold: #aa8c5a;
+    --gold-pale: #f7f1e8;
+    --white: #FFFFFF;
+    --off-white: #F6F5F2;
+    --text-primary: #042219;
+    --text-secondary: #3d4a3e;
+    --text-muted: #7a8c7b;
+    --border: rgba(4,34,25,0.10);
+    --border-strong: rgba(4,34,25,0.18);
+    --radius: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 3px rgba(4,34,25,0.08);
+    --shadow-md: 0 4px 16px rgba(4,34,25,0.10);
+    --shadow-lg: 0 8px 32px rgba(4,34,25,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: var(--navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .header-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: #fff;
+    letter-spacing: 0.01em;
+  }
+  .header-logo span { color: #c4a97a; }
+  .header-badge {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--navy);
+    padding: 64px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(170,140,90,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c4a97a;
+    background: rgba(196,169,122,0.12);
+    border: 1px solid rgba(196,169,122,0.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero h1 em { font-style: italic; color: #c4a97a; }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: #fff;
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.40);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 500;
+  }
+
+  /* ── Layout ── */
+  .page-body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Progress ── */
+  .progress-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-sm);
+  }
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .progress-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .progress-fraction {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--blue);
+  }
+  .progress-track {
+    height: 5px;
+    background: var(--off-white);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--blue);
+    border-radius: 999px;
+    transition: width 0.4s cubic-bezier(.4,0,.2,1);
+  }
+  .step-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .step-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1.5px solid var(--border-strong);
+    color: var(--text-muted);
+    background: var(--off-white);
+    transition: all 0.25s;
+    flex-shrink: 0;
+  }
+  .step-dot.active {
+    background: var(--blue); border-color: var(--blue);
+    color: #fff; box-shadow: 0 0 0 4px rgba(170,140,90,0.18);
+  }
+  .step-dot.done {
+    background: var(--navy-light); border-color: var(--navy-light); color: #fff;
+  }
+  .step-dot-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .step-line {
+    flex: 1; height: 1px;
+    background: var(--border);
+  }
+  .step-line.done { background: var(--blue); }
+  .step-dots-labels {
+    display: flex;
+    gap: 0;
+    margin-top: 10px;
+  }
+
+  /* ── Form card ── */
+  .form-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
+    animation: fadeUp 0.3s ease;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--text-primary);
+    margin-bottom: 28px;
+    line-height: 1.3;
+  }
+
+  /* ── Question block ── */
+  .q-block { margin-bottom: 28px; }
+  .q-block:last-of-type { margin-bottom: 0; }
+  .q-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+    line-height: 1.45;
+  }
+  .q-hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .q-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── Options ── */
+  .opts { display: flex; flex-direction: column; gap: 8px; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+  .opt:hover { border-color: var(--blue-light); background: #faf7f2; }
+  .opt.selected {
+    border-color: var(--blue);
+    background: var(--blue-pale);
+  }
+  .opt-radio {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: border-color 0.15s;
+  }
+  .opt.selected .opt-radio { border-color: var(--blue); }
+  .opt-radio-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    opacity: 0;
+    transition: opacity 0.15s, transform 0.15s;
+    transform: scale(0.5);
+  }
+  .opt.selected .opt-radio-dot { opacity: 1; transform: scale(1); }
+  .opt-content { flex: 1; }
+  .opt-label {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .opt.selected .opt-label { color: #3a2a0a; font-weight: 500; }
+  .opt-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .opt.selected .opt-sub { color: #7a6030; }
+
+  /* ── Textarea ── */
+  textarea {
+    width: 100%;
+    min-height: 90px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-primary);
+    background: #fff;
+    resize: vertical;
+    line-height: 1.55;
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  textarea:focus { border-color: var(--blue); }
+  textarea::placeholder { color: var(--text-muted); font-style: italic; }
+
+  /* ── Navigation buttons ── */
+  .btn-row {
+    display: flex; gap: 12px;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 11px 22px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    border: 1.5px solid var(--border-strong);
+    background: transparent;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+  .btn:hover { background: var(--off-white); color: var(--text-primary); }
+  .btn-primary {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+    margin-left: auto;
+  }
+  .btn-primary:hover { background: #8a6e3e; border-color: #8a6e3e; }
+  .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  /* ── Alert blocks ── */
+  .alert {
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 20px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .alert-warning { background: #FEF9EC; border: 1px solid #e8c97a; color: #5a3c00; }
+  .alert-info    { background: #f0ede8; border: 1px solid #c4a97a; color: #3a2a0a; }
+  .alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .alert strong { font-weight: 500; }
+
+  /* ── Result ── */
+  #result-area { display: none; animation: fadeUp 0.4s ease; }
+  .result-hero {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    color: #fff;
+  }
+  .result-hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #c4a97a;
+    margin-bottom: 8px;
+  }
+  .result-hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .result-hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .result-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+  .tag {
+    display: inline-block;
+    font-size: 12px; font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+  .tag-blue   { background: #f7f1e8; color: #3a2a0a; }
+  .tag-teal   { background: #eef1eb; color: #1e3020; }
+  .tag-amber  { background: #f7f1e8; color: #5a3c00; }
+  .tag-purple { background: #F0EEFF; color: #3C2E8A; }
+  .tag-navy   { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
+
+  .result-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .result-card-header {
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .result-card-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .result-card-title {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+  }
+  .result-card-body { padding: 24px 28px; }
+  .result-sub-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 19px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .result-body-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .result-divider { height: 1px; background: var(--border); margin: 18px 0; }
+  .result-sublabel {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .step-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .step-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-size: 11px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .step-num.teal { background: var(--navy-light); }
+  .step-num.gold { background: var(--blue); }
+  .step-content { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+  .step-content strong { color: var(--text-primary); font-weight: 500; display: block; margin-bottom: 2px; }
+  .phase-header {
+    font-size: 11px; font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-muted);
+    margin: 18px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .phase-header:first-child { margin-top: 0; }
+  .formats-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .freq-block {
+    background: var(--off-white);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    border-left: 3px solid var(--blue);
+  }
+  .cta-block {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .cta-block p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 11px 20px;
+    font-size: 14px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin: 4px;
+  }
+  .cta-btn:hover { background: rgba(255,255,255,0.17); }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .site-footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.28);
+    line-height: 1.6;
+  }
+  .site-footer a { color: rgba(255,255,255,0.40); text-decoration: none; }
+  .site-footer a:hover { color: rgba(255,255,255,0.60); }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .form-card, .result-card-body, .result-card-header, .result-hero { padding-left: 20px; padding-right: 20px; }
+    .hero { padding: 48px 20px 60px; }
+    .header-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">Vitrine<span>Digital</span> Médica</div>
+    <div class="header-badge">Resolução CFM nº 2.336/2023</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Diagnóstico estratégico</div>
+  <h1>Seu plano de posicionamento<br>no <em>Instagram</em></h1>
+  <p class="hero-sub">Responda 7 blocos de perguntas e receba uma estratégia personalizada — do perfil ao plano de conteúdo para os primeiros 30 dias.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">4</span><span class="hero-stat-label">Blocos</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">~5</span><span class="hero-stat-label">Minutos</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">Gratuito</span></div>
+  </div>
+</section>
+
+<main class="page-body">
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="progress-top">
+      <span class="progress-label" id="prog-section">Seção 1 de 4 — Perfil profissional</span>
+      <span class="progress-fraction" id="prog-frac">25%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:25%"></div></div>
+    <div class="step-dots" id="step-dots"></div>
+  </div>
+
+  <!-- Form area -->
+  <div id="form-area"></div>
+
+  <!-- Result area -->
+  <div id="result-area"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Este diagnóstico é uma ferramenta orientativa, não substitui consultoria profissional individualizada.<br>
+  Toda presença digital médica deve observar a <a href="https://www.cfm.org.br" target="_blank" rel="noopener">Resolução CFM nº 2.336/2023</a>.</p>
+</footer>
+
+<script>
+const steps = [
+  {
+    section: "Perfil profissional",
+    eyebrow: "Bloco 01",
+    questions: [
+      {
+        id: "stage",
+        text: "Qual é o seu momento atual na medicina?",
+        hint: "Isso determina o horizonte e o tipo de estratégia mais adequado.",
+        type: "radio",
+        opts: [
+          { val: "estudante_inicio", label: "Estudante de medicina — início do curso (1º ao 4º ano)", sub: "Ainda sem prática clínica intensa" },
+          { val: "estudante_fim",   label: "Estudante de medicina — fim do curso (5º ao 6º ano)", sub: "Internato, maior contato clínico" },
+          { val: "residente",       label: "Médica em residência ou fellowship", sub: "Especialização formal em andamento" },
+          { val: "recém_formada",   label: "Médica recém-formada (menos de 2 anos)", sub: "Construindo a carreira clínica" },
+          { val: "clinica_ativa",   label: "Médica com clínica ativa (2 a 10 anos de prática)", sub: "Já atende pacientes regularmente" },
+          { val: "consolidada",     label: "Médica estabelecida (mais de 10 anos)", sub: "Reputação construída, quer ampliar presença digital" }
+        ]
+      },
+      {
+        id: "specialty",
+        text: "Qual é a sua especialidade ou área de atuação principal?",
+        hint: "Escreva livremente — ex: dermatologia, ginecologia, endocrinologia, clínica médica...",
+        type: "textarea",
+        placeholder: "Ex: Dermatologia, com interesse em pele negra e fotoproteção"
+      },
+      {
+        id: "niche_clarity",
+        text: "Você já tem clareza sobre o nicho ou tema específico que quer comunicar?",
+        hint: "Dentro de uma especialidade pode haver vários ângulos.",
+        type: "radio",
+        opts: [
+          { val: "claro",  label: "Sim, tenho um nicho bem definido" },
+          { val: "vago",   label: "Tenho uma ideia, mas ainda não está totalmente claro" },
+          { val: "nenhum", label: "Ainda não defini — quero ajuda para isso" }
+        ]
+      }
+    ]
+  },
+  {
+    section: "Experiência digital e objetivos",
+    eyebrow: "Bloco 02",
+    questions: [
+      {
+        id: "ig_experience",
+        text: "Como você descreveria sua experiência atual com o Instagram?",
+        hint: "Considere uso profissional, não pessoal.",
+        type: "radio",
+        opts: [
+          { val: "zero",             label: "Nunca usei para fins profissionais", sub: "Conta pessoal apenas, sem publicações sobre medicina" },
+          { val: "esporadico",       label: "Já publiquei algumas vezes, mas sem estratégia", sub: "Postagens ocasionais, sem regularidade" },
+          { val: "iniciante_ativo",  label: "Comecei recentemente e quero estruturar melhor", sub: "Ativo há menos de 6 meses com intenção profissional" },
+          { val: "intermediario",    label: "Tenho um perfil ativo, mas sinto que poderia funcionar melhor", sub: "Já publico, mas os resultados não são os esperados" }
+        ]
+      },
+      {
+        id: "objective",
+        text: "Qual é o seu principal objetivo com o Instagram profissional?",
+        hint: "Escolha o objetivo mais próximo da sua realidade atual.",
+        type: "radio",
+        opts: [
+          { val: "preparar",     label: "Me preparar — quero construir a base antes de me formar", sub: "Foco em aprendizado e posicionamento futuro" },
+          { val: "autoridade",   label: "Construir autoridade na minha especialidade", sub: "Ser reconhecida como referência técnica" },
+          { val: "pacientes",    label: "Atrair pacientes para a minha clínica ou consultório", sub: "Crescer a base de pacientes de forma consistente" },
+          { val: "visibilidade", label: "Aumentar visibilidade profissional em geral", sub: "Oportunidades de palestras, cursos, convites, parcerias" },
+          { val: "educação",     label: "Educar o público sobre saúde na minha área", sub: "Contribuir com informação de qualidade, sem foco comercial imediato" }
+        ]
+      },
+      {
+        id: "timeline",
+        text: "Em quanto tempo você espera ver resultados concretos?",
+        type: "radio",
+        opts: [
+          { val: "longo",    label: "Estou planejando para o futuro — ainda não quero ativar", sub: "Estudante ou médica que quer se preparar com antecedência" },
+          { val: "médio",    label: "Em 6 a 12 meses", sub: "Disposição para construir com consistência" },
+          { val: "curto",    label: "Em 3 a 6 meses", sub: "Já tenho estrutura para começar agora" },
+          { val: "imediato", label: "O mais rápido possível", sub: "Necessidade de presença digital urgente" }
+        ]
+      }
+    ]
+  },
+  {
+    section: "Tempo, estilo e público",
+    eyebrow: "Bloco 03",
+    questions: [
+      {
+        id: "time_available",
+        text: "Quanto tempo por semana você consegue dedicar ao Instagram?",
+        hint: "Considere produção de conteúdo, respostas e análise de métricas.",
+        type: "radio",
+        opts: [
+          { val: "menos1", label: "Menos de 1 hora por semana", sub: "Ritmo muito reduzido — alta restrição de tempo" },
+          { val: "1a2",    label: "1 a 2 horas por semana", sub: "Permite 1 a 2 publicações semanais bem feitas" },
+          { val: "3a5",    label: "3 a 5 horas por semana", sub: "Permite rotina consistente de 3x por semana" },
+          { val: "mais5",  label: "Mais de 5 horas por semana", sub: "Possibilidade de maior diversidade de formatos" }
+        ]
+      },
+      {
+        id: "comm_style",
+        text: "Como você se sente mais confortável se comunicando?",
+        hint: "Isso orienta a escolha de formatos e tom de conteúdo.",
+        type: "radio",
+        opts: [
+          { val: "escrito", label: "Prefiro escrever — legendas, carrosséis, textos", sub: "Clareza no raciocínio escrito" },
+          { val: "falado",  label: "Me sinto bem falando — vídeos, reels, stories", sub: "Comunicação verbal fluente" },
+          { val: "visual",  label: "Prefiro comunicar por imagens e infográficos", sub: "Raciocínio visual forte" },
+          { val: "misto",   label: "Consigo combinar texto, fala e imagens bem" }
+        ]
+      },
+      {
+        id: "audience",
+        text: "Qual é o público principal que você quer alcançar?",
+        type: "radio",
+        opts: [
+          { val: "pacientes_geral",  label: "Pacientes em geral, da população leiga", sub: "Linguagem acessível, foco preventivo e informativo" },
+          { val: "pacientes_nicho",  label: "Pacientes com condição específica", sub: "Ex: pacientes com tireoide, endometriose, problemas de pele..." },
+          { val: "mulheres",         label: "Mulheres com perfil específico (idade, fase de vida)", sub: "Ex: mulheres no climatério, gestantes, mães..." },
+          { val: "pares",            label: "Médicos e profissionais de saúde", sub: "Discussão técnica, atualizações, troca entre pares" },
+          { val: "misto_pub",        label: "Pacientes e pares — quero alcançar os dois" }
+        ]
+      },
+      {
+        id: "exposure",
+        text: "Qual é o seu nível de conforto com exposição pessoal no Instagram?",
+        hint: "Isso influencia diretamente a estratégia de conteúdo recomendada.",
+        type: "radio",
+        opts: [
+          { val: "baixo",    label: "Prefiro manter foco técnico — pouca exposição pessoal", sub: "Conteúdo objetivo, sem mostrar muito da rotina" },
+          { val: "moderado", label: "Confortável com alguma exposição — ambiente de trabalho, equipe", sub: "Alguma personalização sem exibicionismo" },
+          { val: "alto",     label: "Aberta à exposição — rotina, bastidores, presença humana", sub: "Comunicação mais próxima do seguidor" }
+        ]
+      }
+    ]
+  },
+  {
+    section: "Contexto e diferenciais",
+    eyebrow: "Bloco 04",
+    questions: [
+      {
+        id: "differentials",
+        text: "Você tem algum diferencial profissional que se destaca?",
+        hint: "Ex: formação internacional, pesquisa ativa, subespecialidade rara, atendimento exclusivo...",
+        type: "textarea",
+        placeholder: "Ex: Residência em Harvard, pesquisa publicada sobre X, único consultório da cidade especializado em Y"
+      },
+      {
+        id: "biggest_fear",
+        text: "Qual é a sua maior preocupação sobre estar no Instagram profissionalmente?",
+        type: "radio",
+        opts: [
+          { val: "etica",        label: "Cometer alguma infração ética ou violar as normas do CFM" },
+          { val: "imagem",       label: "Prejudicar minha imagem profissional com conteúdo inadequado" },
+          { val: "tempo",        label: "Não conseguir manter consistência por falta de tempo" },
+          { val: "relevancia",   label: "Produzir conteúdo que ninguém vai assistir ou salvar" },
+          { val: "concorrencia", label: "Parecer igual a todos os outros perfis médicos" }
+        ]
+      },
+      {
+        id: "crm_ready",
+        text: "Você já tem CRM ativo e, se especialista, RQE registrado?",
+        hint: "Obrigatório para identificação pública conforme Resolução CFM nº 2.336/2023.",
+        type: "radio",
+        opts: [
+          { val: "sim_ambos",   label: "Sim — tenho CRM e RQE registrado" },
+          { val: "sim_crm",     label: "Tenho CRM, mas ainda não tenho RQE (não sou especialista ainda)" },
+          { val: "em_processo", label: "Estou em processo de obtenção do CRM (residente ou recém-formada)" },
+          { val: "nao_ainda",   label: "Ainda não — sou estudante" }
+        ]
+      }
+    ]
+  }
+];
+
+let currentStep = 0;
+let answers = {};
+
+function renderDots() {
+  const wrap = document.getElementById('step-dots');
+  wrap.innerHTML = '';
+  steps.forEach((s, i) => {
+    if (i > 0) {
+      const line = document.createElement('div');
+      line.className = 'step-line' + (i <= currentStep ? ' done' : '');
+      wrap.appendChild(line);
+    }
+    const dot = document.createElement('div');
+    dot.className = 'step-dot' + (i < currentStep ? ' done' : i === currentStep ? ' active' : '');
+    dot.textContent = i < currentStep ? '✓' : (i + 1);
+    dot.title = s.section;
+    wrap.appendChild(dot);
+  });
+  const pct = Math.round(((currentStep + 1) / (steps.length + 1)) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-frac').textContent = pct + '%';
+  document.getElementById('prog-section').textContent =
+    'Seção ' + (currentStep + 1) + ' de ' + steps.length + ' — ' + steps[currentStep].section;
+}
+
+function renderStep(idx) {
+  const s = steps[idx];
+  let html = `<div class="form-card">
+    <div class="section-eyebrow">${s.eyebrow}</div>
+    <div class="section-title">${s.section}</div>`;
+  s.questions.forEach((q, qi) => {
+    if (qi > 0) html += `<div class="q-divider"></div>`;
+    html += `<div class="q-block">
+      <div class="q-text">${q.text}${q.type === 'textarea' ? ' <span style="font-size:11px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-muted);margin-left:6px;">Opcional</span>' : ''}</div>
+      ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}`;
+    if (q.type === 'radio') {
+      html += `<div class="opts">`;
+      q.opts.forEach(o => {
+        const sel = answers[q.id] === o.val ? ' selected' : '';
+        html += `<div class="opt${sel}" onclick="pick('${q.id}','${o.val}',this)" role="button" tabindex="0">
+          <div class="opt-radio"><div class="opt-radio-dot"></div></div>
+          <div class="opt-content">
+            <div class="opt-label">${o.label}</div>
+            ${o.sub ? `<div class="opt-sub">${o.sub}</div>` : ''}
+          </div>
+        </div>`;
+      });
+      html += `</div>`;
+    } else {
+      html += `<textarea id="ta_${q.id}" placeholder="${q.placeholder || ''}" oninput="answers['${q.id}']=this.value">${answers[q.id] || ''}</textarea>`;
+    }
+    html += `</div>`;
+  });
+  html += `<div class="btn-row">`;
+  if (idx > 0) {
+    html += `<button class="btn" onclick="goStep(${idx - 1})">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Voltar
+    </button>`;
+  }
+  if (idx < steps.length - 1) {
+    html += `<button class="btn btn-primary" onclick="nextStep(${idx})">
+      Próximo
+      <svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>`;
+  } else {
+    html += `<button class="btn btn-primary" onclick="generateResult()">
+      Gerar diagnóstico
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>`;
+  }
+  html += `</div></div>`;
+  document.getElementById('form-area').innerHTML = html;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function pick(qid, val, el) {
+  answers[qid] = val;
+  el.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function allAnswered(idx) {
+  return steps[idx].questions.every(q => {
+    if (q.type === 'textarea') return true; // optional
+    const v = answers[q.id];
+    if (!v) return false;
+    return typeof v === 'string' ? v.trim().length > 0 : true;
+  });
+}
+
+function nextStep(idx) {
+  if (!allAnswered(idx)) {
+    alert('Por favor, responda todas as questões desta seção antes de avançar.');
+    return;
+  }
+  currentStep = idx + 1;
+  renderDots();
+  renderStep(currentStep);
+}
+
+function goStep(idx) {
+  currentStep = idx;
+  renderDots();
+  renderStep(currentStep);
+}
+
+function generateResult() {
+  if (!allAnswered(currentStep)) {
+    alert('Por favor, responda todas as questões antes de gerar o diagnóstico.');
+    return;
+  }
+  document.getElementById('form-area').style.display = 'none';
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('prog-frac').textContent = '100%';
+  document.getElementById('prog-section').textContent = 'Diagnóstico concluído';
+  document.getElementById('step-dots').querySelectorAll('.step-dot').forEach(d => {
+    d.className = 'step-dot done'; d.textContent = '✓';
+  });
+  document.getElementById('step-dots').querySelectorAll('.step-line').forEach(l => l.classList.add('done'));
+  const html = buildResult();
+  const ra = document.getElementById('result-area');
+  ra.style.display = 'block';
+  ra.innerHTML = html;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function buildResult() {
+  const a = answers;
+  const isStudent   = a.stage === 'estudante_inicio' || a.stage === 'estudante_fim';
+  const isResident  = a.stage === 'residente';
+  const isNewDoc    = a.stage === 'recém_formada';
+  const isActive    = a.stage === 'clinica_ativa';
+  const hasCRM      = a.crm_ready !== 'nao_ainda';
+  const hasCRMRQE   = a.crm_ready === 'sim_ambos';
+  const timeFuture  = a.timeline === 'longo';
+  const lowTime     = a.time_available === 'menos1' || a.time_available === '1a2';
+  const expLow      = a.exposure === 'baixo';
+  const expHigh     = a.exposure === 'alto';
+  const prefEscrito = a.comm_style === 'escrito';
+  const prefFalado  = a.comm_style === 'falado';
+  const specialty   = (a.specialty || 'sua especialidade').trim();
+
+  let positioningType = '', diagText = '', stratText = '', justText = '';
+  let contentPriority = [], formats = [], freq = '';
+  let shortSteps = [], midSteps = [], longSteps = [];
+  let expBadge = expHigh ? { label: 'Exposição alta', cls: 'tag-teal' } : expLow ? { label: 'Exposição baixa', cls: 'tag-amber' } : { label: 'Exposição moderada', cls: 'tag-blue' };
+
+  if (isStudent && timeFuture) {
+    positioningType = 'Posicionamento latente — construção de base sem ativação imediata';
+    diagText = 'Você está em fase de formação e decidiu, estrategicamente, preparar sua presença digital com antecedência. Quando se formar, não vai começar do zero — vai ativar uma base que já existe.';
+    stratText = 'O foco não é atrair pacientes agora. É construir o hábito de comunicação e definir o posicionamento antes de precisar dele. A identidade digital construída como estudante influencia diretamente como você será percebida ao entrar no mercado.';
+    justText = 'Pesquisas de Fogg (Stanford Persuasive Technology Lab) mostram que consistência ao longo do tempo é o preditor mais forte de credibilidade percebida. Um perfil com 6 meses de histórico coerente é significativamente mais crível do que um perfil recém-criado com muita produção acelerada.';
+    contentPriority = ['Curadoria de conteúdo científico da sua área', 'Registro de aprendizados e trajetória acadêmica', 'Participação em discussões técnicas relevantes'];
+    formats = ['Stories educativos leves', 'Reposts comentados de estudos', 'Posts de bastidores acadêmicos'];
+    freq = '1 a 2 publicações por semana — foco em consistência mínima';
+    shortSteps = [
+      { t: 'Analise perfis de referência', d: 'Siga 10 a 15 médicas que você admira e analise o que funciona em cada uma — formato, tom, frequência, engajamento.' },
+      { t: 'Estude a Resolução CFM nº 2.336/2023', d: 'Compreender as regras agora significa não ter surpresas quando ativar o perfil profissional.' },
+      { t: 'Anote seu posicionamento futuro', d: 'Liste as 5 perguntas que as pessoas ao seu redor mais fazem sobre saúde. Elas serão seu ponto de partida.' }
+    ];
+    midSteps = [
+      { t: 'Crie o perfil como estudante de medicina', d: 'Username com seu nome real. Bio clara: estudante de medicina + área de interesse. Sem CRM por enquanto — você ainda não pode se identificar como médica.' },
+      { t: 'Publique sobre sua trajetória acadêmica', d: 'O que você está estudando, aprendendo, vivenciando. Isso é autêntico e diferenciado — e cria audiência antes da formatura.' },
+      { t: 'Construa consistência mínima', d: '1 publicação por semana por pelo menos 6 meses antes de se formar.' }
+    ];
+    longSteps = [
+      { t: 'Ao obter o CRM: atualize o perfil imediatamente', d: 'Adicione CRM + palavra MÉDICA + RQE quando aplicável. O perfil existente acelera a transição para profissional.' },
+      { t: 'Ative o posicionamento médico', d: 'A audiência construída como estudante acompanha a transição — você não começa do zero.' }
+    ];
+  } else if (isStudent) {
+    positioningType = 'Posicionamento acadêmico — autoridade estudantil com identidade em construção';
+    diagText = 'Você é estudante de medicina com intenção de construir presença digital agora. Sem CRM, não pode se identificar como médica nem dar orientações clínicas. Mas pode construir autoridade como estudante aprendendo em público — e isso é um diferencial real.';
+    stratText = 'Posicione-se como estudante de medicina que compartilha o processo de aprender. Quando se formar, a transição para perfil médico será natural e a audiência que você construiu acompanhará essa evolução.';
+    justText = 'O conceito de "aprender em público" (Learning in Public, amplamente documentado em contextos digitais) mostra que documentar o processo de aprendizado — não apenas os resultados — gera alto engajamento e confiança. Na medicina, isso se traduz em compartilhar o que você estuda, não o que você sabe como especialista.';
+    contentPriority = ['Conteúdo sobre a trajetória médica — o que você aprende e vivencia', 'Educação em saúde baseada no que você estuda', 'Desmistificação de dúvidas sobre a medicina para leigos'];
+    formats = ['Carrosséis com curiosidades da sua área', 'Reels de "o que aprendi hoje"', 'Stories com perguntas e respostas'];
+    freq = '2 a 3 publicações por semana';
+    shortSteps = [
+      { t: 'Crie o perfil com identidade de estudante', d: 'Username com seu nome. Bio: estudante de medicina + área de interesse. Sem CRM.' },
+      { t: 'Publique sobre o que está aprendendo', d: 'Transforme o que você estuda em conteúdo. Curiosidades, desmistificações, explicações simples para leigos.' },
+      { t: 'Estude a Resolução CFM nº 2.336/2023', d: 'Você precisa saber as regras antes de precisar seguí-las — especialmente as restrições para estudantes.' }
+    ];
+    midSteps = [
+      { t: 'Desenvolva um nicho temático claro', d: 'Com base nas perguntas que recebe, escolha 2 temas centrais para aprofundar consistentemente.' },
+      { t: 'Experimente formatos e analise resultados', d: 'Teste carrossel, reels e stories. Analise o que gera mais salvamentos — esse é o indicador mais relevante.' },
+      { t: 'Construa identidade visual consistente', d: 'Paleta de cores, tipografia e estilo visual coerente. Não precisa ser profissional — precisa ser reconhecível.' }
+    ];
+    longSteps = [
+      { t: 'Transição para perfil médico ao obter CRM', d: 'Atualizar a identificação é obrigatório pela Resolução CFM 2.336/2023. A audiência já construída acompanha a transição.' }
+    ];
+  } else if (isResident) {
+    positioningType = 'Posicionamento de transição — especialidade em construção, autoridade emergente';
+    diagText = 'Você está em residência — um dos períodos de maior aprendizado técnico e, simultaneamente, de maior restrição de tempo. A estratégia precisa ser leve o suficiente para não competir com a residência, mas consistente o suficiente para construir base sólida.';
+    stratText = 'Foque em conteúdo que aproveita o que você já está aprendendo na residência. Você não precisa criar conteúdo novo do zero — pode transformar o que já estuda em posts. Essa é a estratégia de menor custo de tempo com maior retorno de autoridade.';
+    justText = 'Dados de Social Media Examiner em nichos especializados mostram que consistência supera frequência. Uma médica em residência que publica 2 vezes por semana de forma consistente por 12 meses constrói percepção de autoridade significativamente superior a uma que publica intensamente por 3 meses e para.';
+    contentPriority = ['Educação sobre a especialidade que você está cursando', 'Desmistificação de mitos frequentes na sua área', 'Conteúdo sobre o processo de formação médica'];
+    formats = ['Carrosséis explicativos', 'Reels curtos de dúvidas frequentes', 'Stories de bastidores da residência (com discrição ética)'];
+    freq = '2 a 3 publicações por semana — adaptado à carga da residência';
+    shortSteps = [
+      { t: 'Configure o perfil com identificação correta', d: `Bio: nome completo + MÉDICA + CRM${hasCRMRQE ? ' + RQE' : ''} + especialidade em formação. Foto profissional.` },
+      { t: 'Defina os 2 temas principais', d: 'Com base no que você está aprendendo na residência, escolha os 2 temas que você domina melhor para aprofundar.' },
+      { t: 'Publique os 6 primeiros posts com planejamento', d: 'Apresentação + 2 conteúdos educativos + 1 bastidores + 1 mito desmistificado + 1 FAQ básico.' }
+    ];
+    midSteps = [
+      { t: 'Mantenha frequência de 2x por semana', d: 'Priorize carrosséis — alto salvamento, baixo custo de produção para quem tem pouco tempo.' },
+      { t: 'Use a caixinha de perguntas nos stories', d: 'Uma vez por semana. As perguntas recebidas orientam o conteúdo seguinte — você produz o que o paciente já pediu.' },
+      { t: 'Monitore salvamentos, não curtidas', d: 'O salvamento é o indicador mais relevante de autoridade. Conteúdos com alto salvamento devem ser aprofundados.' }
+    ];
+    longSteps = [
+      { t: 'Ao concluir a residência: atualizar o posicionamento', d: 'Adicione RQE, atualize a bio e reforce o posicionamento de especialista com o novo título.' },
+      { t: 'Consolide 2 a 3 temas de referência', d: 'Depois de 12 meses, você deve ser reconhecida por temas específicos, não por tudo da especialidade.' }
+    ];
+  } else if (a.objective === 'pacientes') {
+    positioningType = 'Posicionamento de captação qualificada — autoridade como atrativo de pacientes';
+    diagText = 'Você tem prática clínica ativa e o objetivo principal é converter presença digital em pacientes reais. Esse é o uso mais direto do Instagram profissional — e também o que exige maior rigor estratégico para não escorregar para promoção de baixa qualidade.';
+    stratText = 'A estratégia mais eficaz para captação qualificada não é divulgação direta de serviços — é educação que gera percepção de competência. Pacientes que aprendem algo útil com você já estabeleceram uma relação de confiança antes de agendar. A divulgação de serviços (20% do conteúdo) amplifica esse efeito.';
+    justText = 'O estudo de Antheunis et al. (2013, Patient Education and Counseling) demonstrou que a percepção de que um profissional "se importa em explicar" é o preditor mais forte de intenção de consultar. Hanauer et al. (2014, JAMA Intern Med) identificaram que qualidade percebida do conteúdo publicado é o segundo fator mais relevante na escolha online de um médico.';
+    contentPriority = ['Conteúdo educativo sobre condições tratadas na sua especialidade', 'Posts sobre quando procurar o especialista (sintomas e sinais de alerta)', 'Apresentação do ambiente, estrutura e diferenciais do consultório'];
+    formats = prefEscrito ? ['Carrosséis de "quando procurar um médico para..."', 'Posts com FAQ respondido', 'Legendas longas e analíticas'] : prefFalado ? ['Reels de desmistificação', 'Stories em vídeo com FAQ', 'Lives temáticas mensais'] : ['Mix de carrossel + reels', 'Stories com bastidores clínicos', 'Infográficos educativos'];
+    freq = `${lowTime ? '2' : '3'} publicações por semana no feed + 3 a 5 stories por semana`;
+    shortSteps = [
+      { t: 'Configure o perfil corretamente', d: `Username com nome real. Bio: nome completo + MÉDICA + CRM${hasCRMRQE ? ' + RQE' : ''} + especialidade + call to action. Foto profissional com fundo neutro.` },
+      { t: 'Configure o link na bio', d: 'Use Linktree ou similar com: agendamento, WhatsApp profissional e currículo ou referência técnica.' },
+      { t: 'Publique os 9 primeiros posts planejados', d: 'Apresentação + 3 conteúdos educativos centrais + ambiente de trabalho + FAQ + 1 mito desmistificado + CTA de agendamento.' }
+    ];
+    midSteps = [
+      { t: `Publique ${lowTime ? '2x' : '3x'} por semana com consistência`, d: `Formato prioritário: ${prefEscrito ? 'carrosséis com legendas estruturadas' : prefFalado ? 'reels curtos (30 a 60 segundos)' : 'mix de carrossel e reels'}. Consistência supera volume.` },
+      { t: 'Monitore métricas de salvamento semanalmente', d: 'O salvamento indica autoridade. Conteúdos com alto salvamento devem ser aprofundados e repetidos em diferentes formatos.' },
+      { t: 'Ative a caixinha de perguntas nos stories', d: 'Uma vez por semana. As perguntas recebidas alimentam os próximos posts — você produz o que o paciente já pediu.' }
+    ];
+    longSteps = [
+      { t: 'Consolide 3 a 5 temas de referência', d: 'Depois de 6 meses, você deve ser reconhecida como referência em temas específicos, não em tudo da sua especialidade.' },
+      { t: 'Mapeie a jornada de conversão', d: 'Identifique quais conteúdos levam ao clique no link e precedem agendamentos. Otimize esse caminho.' },
+      { t: 'Diversifique os formatos', d: 'Introduza lives temáticas e séries de conteúdo. Sempre com identificação correta conforme Resolução CFM 2.336/2023.' }
+    ];
+  } else if (a.objective === 'autoridade' || a.objective === 'visibilidade') {
+    positioningType = 'Posicionamento de autoridade técnica — referência na especialidade';
+    diagText = 'Seu objetivo é construir autoridade e ser reconhecida como referência técnica. Isso requer uma estratégia diferente da captação de pacientes: mais profundidade, mais posicionamento intelectual, maior rigor na citação de evidências.';
+    stratText = 'Perfis de autoridade se distinguem não pelo volume de conteúdo, mas pela consistência do posicionamento técnico. Escolha 2 a 3 temas centrais e aprofunde-os ao longo de meses — não publique sobre tudo. A especialização percebida dentro de uma especialidade já específica é o diferencial mais forte em termos de autoridade digital.';
+    justText = 'Chou et al. (2009, Am J Prev Med) identificaram que pacientes e pares distinguem entre profissionais que "opinam" e profissionais que "fundamentam". A autoridade percebida é atribuída de forma consistente aos que apresentam evidência como base de seus conteúdos. Conteúdo analítico compartilhado por pares também amplia visibilidade para congressos e convites.';
+    contentPriority = ['Análise de estudos recentes na sua área com tradução acessível', 'Posicionamento sobre controvérsias técnicas com embasamento rigoroso', 'Conteúdo de alta densidade técnica — o que você sabe que poucos comunicam'];
+    formats = ['Carrosséis analíticos', 'Reels de "o que a ciência diz sobre..."', 'Posts de opinião técnica fundamentada'];
+    freq = '3 a 4 publicações por semana — foco em profundidade, não volume';
+    shortSteps = [
+      { t: 'Defina os 2 temas nos quais você é mais profunda', d: 'Não o que é mais popular — o que você domina com mais profundidade e que responde perguntas reais da sua área.' },
+      { t: 'Configure o perfil com credenciais completas', d: `Bio completa: nome + MÉDICA + CRM${hasCRMRQE ? ' + RQE' : ''} + especialidade + posicionamento específico. Ex: "Dermatologista — foco em pele negra e fotobiologia".` },
+      { t: 'Publique seu primeiro conteúdo analítico de referência', d: 'Um post que responda uma pergunta técnica frequente com embasamento científico. Esse post define o padrão do perfil.' }
+    ];
+    midSteps = [
+      { t: 'Mantenha 3 a 4 publicações semanais nos temas escolhidos', d: 'Varie entre análise de estudos, desmistificação de mitos e posicionamento técnico. Sempre com fonte.' },
+      { t: 'Declare conflitos de interesse quando relevante', d: 'Obrigatório pela Resolução CFM 2.336/2023 em qualquer manifestação pública sobre medicamentos, equipamentos ou procedimentos.' },
+      { t: 'Analise o que os pares compartilham', d: 'Conteúdo compartilhado por colegas médicos é sinal de autoridade técnica — mais relevante que curtidas de leigos.' }
+    ];
+    longSteps = [
+      { t: 'Construa séries temáticas aprofundadas', d: 'Séries de 5 a 10 posts sobre um tema específico constroem autoridade de forma estruturada e geram audiência fiel.' },
+      { t: 'Desenvolva material de referência', d: 'PDFs educativos, guias ou e-books baseados nos seus conteúdos mais salvados criam ativos digitais de autoridade duradoura.' }
+    ];
+  } else {
+    positioningType = 'Posicionamento educacional — saúde pública digital com autoridade emergente';
+    diagText = 'Seu foco é educação pública, não captação direta. Esse posicionamento é de alto valor social e também estratégico: profissionais que educam consistentemente constroem autoridade que naturalmente gera oportunidades — convites, referências, parcerias — mesmo sem buscá-las ativamente.';
+    stratText = 'Priorize linguagem de máxima acessibilidade sem perder precisão. Cada post deve responder a uma dúvida que um paciente real teria. Acompanhe perguntas nos comentários e stories — elas são o mapa do conteúdo mais necessário para o seu público.';
+    justText = 'Chou et al. (2009, Am J Prev Med) documentaram que 72% dos adultos buscam informação de saúde online antes de uma consulta. Profissionais que preenchem essa lacuna com informação confiável e acessível constroem uma posição de referência difícil de replicar e que gera confiança de longo prazo.';
+    contentPriority = ['Prevenção e promoção da saúde para o público leigo', 'Desmistificação de desinformação circulante na sua área', 'Orientações de comportamento saudável baseadas em evidência'];
+    formats = ['Reels curtos e acessíveis (30 a 60s)', 'Carrosséis de "mito ou verdade"', 'Stories com perguntas e respostas'];
+    freq = '3 publicações por semana — linguagem máxima acessibilidade';
+    shortSteps = [
+      { t: 'Configure o perfil com identificação obrigatória', d: `Bio: nome + MÉDICA + CRM${hasCRMRQE ? ' + RQE' : ''} + especialidade + para quem você fala. Link de contato ou referência.` },
+      { t: 'Mapeie as 10 dúvidas mais frequentes do seu público', d: 'Use perguntas reais de pacientes, comentários em outros perfis, ou pesquisas no Google. Essas dúvidas são o seu calendário de conteúdo.' },
+      { t: 'Publique seus primeiros 6 posts de educação básica', d: '2 desmistificações + 2 orientações de prevenção + 1 "quando procurar um médico" + 1 apresentação profissional.' }
+    ];
+    midSteps = [
+      { t: 'Mantenha 3 publicações semanais com linguagem acessível', d: 'Evite jargão clínico sem tradução. Teste com alguém sem formação médica antes de publicar.' },
+      { t: 'Use a caixinha de perguntas semanalmente', d: 'As perguntas recebidas nos stories são o seu melhor indicador de o que o público precisa saber.' },
+      { t: 'Monitore compartilhamentos — não apenas curtidas', d: 'Conteúdo compartilhado indica que o seguidor considerou útil o suficiente para enviar a alguém. Esse é o maior indicador de impacto educacional.' }
+    ];
+    longSteps = [
+      { t: 'Desenvolva conteúdos de referência para temas principais', d: 'Posts completos sobre as principais condições da sua área — que funcionam como guias que o paciente salva e consulta.' },
+      { t: 'Avalie parcerias com outros profissionais complementares', d: 'Colaborações educativas ampliam o alcance e a credibilidade — sempre com identificação correta de todos os envolvidos.' }
+    ];
+  }
+
+  const crmAlert = !hasCRM ? `<div class="alert alert-warning"><span class="alert-icon">⚠</span><span><strong>Atenção regulatória:</strong> Sem CRM ativo, você não pode se identificar publicamente como médica. Identifique-se como "estudante de medicina" até a obtenção do registro, conforme a Resolução CFM nº 2.336/2023.</span></div>` : '';
+  const fearEtica = a.biggest_fear === 'etica' ? `<div class="alert alert-info"><span class="alert-icon">i</span><span><strong>Sobre ética digital:</strong> A Resolução CFM nº 2.336/2023 é sua base de segurança. Os pontos críticos são: identidade visível (CRM + RQE + MÉDICA), proibição de garantia de resultados e regras para uso de imagens de pacientes. Siga-os e você opera com total segurança jurídica.</span></div>` : '';
+  const fearImagem = a.biggest_fear === 'imagem' ? `<div class="alert alert-info"><span class="alert-icon">i</span><span><strong>Sobre proteção de imagem:</strong> O principal protetor é a qualidade e o embasamento do conteúdo. Nunca publique afirmações sem fundamentação. Evite tom emocional ou exagerado. Siga a Resolução CFM 2.336/2023. Esses três pontos cobrem 95% dos riscos.</span></div>` : '';
+  const fearConc = a.biggest_fear === 'concorrencia' ? `<div class="alert alert-info"><span class="alert-icon">i</span><span><strong>Sobre diferenciação:</strong> A resposta para não parecer igual a outros perfis não está no design ou nos formatos — está no posicionamento de nicho. Profissionais que falam com profundidade sobre um ângulo específico dentro da especialidade são únicos e insubstituíveis.</span></div>` : '';
+
+  const stepsHtml = (arr, color) => arr.map((s, i) => `<div class="step-item"><div class="step-num ${color}">${i + 1}</div><div class="step-content"><strong>${s.t}</strong>${s.d}</div></div>`).join('');
+
+  return `
+  ${crmAlert}${fearEtica}${fearImagem}${fearConc}
+
+  <div class="result-hero">
+    <div class="result-hero-label">Diagnóstico de posicionamento — ${specialty}</div>
+    <div class="result-hero-title">${positioningType}</div>
+    <div class="result-hero-sub">${diagText}</div>
+    <div class="result-tags">
+      <span class="tag tag-navy">${expBadge.label}</span>
+      ${isStudent ? '<span class="tag tag-navy">Perfil em formação</span>' : ''}
+      ${a.objective === 'pacientes'    ? '<span class="tag tag-navy">Foco em captação</span>' : ''}
+      ${a.objective === 'autoridade'   ? '<span class="tag tag-navy">Foco em autoridade técnica</span>' : ''}
+      ${a.objective === 'educação'     ? '<span class="tag tag-navy">Foco educacional</span>' : ''}
+      ${a.objective === 'visibilidade' ? '<span class="tag tag-navy">Foco em visibilidade</span>' : ''}
+      ${(a.differentials || '').trim() ? '<span class="tag tag-navy">Diferencial identificado</span>' : ''}
+    </div>
+  </div>
+
+  <div class="result-card">
+    <div class="result-card-header"><div class="result-card-num">02</div><div class="result-card-title">Estratégia recomendada</div></div>
+    <div class="result-card-body">
+      <div class="result-body-text" style="margin-bottom:16px">${stratText}</div>
+      <div class="result-divider"></div>
+      <div class="result-sublabel">Conteúdo prioritário</div>
+      ${contentPriority.map(c => `<div class="step-item"><div class="step-num teal" style="font-size:14px;font-weight:500">→</div><div class="step-content">${c}</div></div>`).join('')}
+      <div class="result-divider"></div>
+      <div class="result-sublabel">Formatos recomendados</div>
+      <div class="formats-row">${formats.map(f => `<span class="tag tag-blue">${f}</span>`).join('')}</div>
+      <div class="result-divider"></div>
+      <div class="result-sublabel">Frequência recomendada</div>
+      <div class="freq-block">${freq}</div>
+    </div>
+  </div>
+
+  <div class="result-card">
+    <div class="result-card-header"><div class="result-card-num">03</div><div class="result-card-title">Plano de ação</div></div>
+    <div class="result-card-body">
+      <div class="phase-header">Curto prazo — primeiros 30 a 60 dias</div>
+      ${stepsHtml(shortSteps, '')}
+      ${midSteps.length ? `<div class="phase-header">Médio prazo — 2 a 6 meses</div>${stepsHtml(midSteps, 'teal')}` : ''}
+      ${longSteps.length ? `<div class="phase-header">Longo prazo — 6 a 12 meses</div>${stepsHtml(longSteps, 'gold')}` : ''}
+    </div>
+  </div>
+
+  <div class="result-card">
+    <div class="result-card-header"><div class="result-card-num">04</div><div class="result-card-title">Justificativa estratégica</div></div>
+    <div class="result-card-body">
+      <div class="result-body-text">${justText}</div>
+      <div class="result-divider"></div>
+      <div class="result-sublabel">Base regulatória</div>
+      <div class="result-body-text">Toda presença digital médica deve observar a <strong style="color:var(--text-primary)">Resolução CFM nº 2.336/2023</strong>, que estabelece obrigações de identificação (CRM, RQE, palavra MÉDICA), restrições sobre garantia de resultados, regras para uso de imagens de pacientes e parâmetros para conteúdo nas redes sociais próprias. Dúvidas devem ser encaminhadas à Codame do seu CRM regional.</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <p>Quer aprofundar algum ponto específico do seu diagnóstico?</p>
+    <button class="cta-btn" onclick="refazer()">Refazer o diagnóstico</button>
+    <a class="cta-btn" href="https://www.cfm.org.br" target="_blank" rel="noopener">Resolução CFM nº 2.336 ↗</a>
+  </div>
+  `;
+}
+
+function refazer() {
+  answers = {};
+  currentStep = 0;
+  document.getElementById('result-area').style.display = 'none';
+  document.getElementById('form-area').style.display = 'block';
+  renderDots();
+  renderStep(0);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderDots();
+renderStep(0);
+</script>
+</body>
+</html>
